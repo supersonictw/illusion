@@ -1,0 +1,42 @@
+version: "2.2"
+services:
+  database:
+    image: mariadb
+    container_name: illusion-data
+    ports:
+      - 127.0.0.1:2001:3306
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - illusion
+    environment:
+      MARIADB_ROOT_PASSWORD: illusion-admin
+    restart: always
+
+  cache:
+    image: redis
+    container_name: illusion-cache
+    ports:
+      - 127.0.0.1:2002:6379
+    networks:
+      - illusion
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: illusion-pma
+    ports:
+      - 127.0.0.1:2003:80
+    networks:
+      - illusion
+    environment:
+      PMA_HOST: "illusion-data"
+    restart: always
+
+volumes:
+  database:
+    driver: local
+
+networks:
+  illusion:
+    driver: bridge
