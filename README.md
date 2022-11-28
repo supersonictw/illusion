@@ -22,4 +22,4 @@ Allow to connect via `localhost` only.
 
 [MIT License](LICENSE)
 
-> (c)2021 [SuperSonic](https://github.com/supersonictw).
+> (c)2022 [SuperSonic](https://github.com/supersonictw).
