@@ -8,9 +8,19 @@ docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
 | -------- | -------------- |
 | root     | illusion-admin |
 
+## Internal Hosts/Ports
+
+Allow to connect via networking `illusion` only.
+
+| Service    | Host           | Port |
+| ---------- | -------------- | ---- |
+| MariaDB    | illusion-data  | 3306 |
+| Redis      | illusion-cache | 6379 |
+| phpMyAdmin | illusion-pga   | 80   |
+
 ## External Ports
 
-Allow to connect via `localhost` only.
+Allow to connect via host `localhost` only.
 
 | Service    | Port |
 | ---------- | ---- |
