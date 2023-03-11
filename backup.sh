@@ -2,11 +2,10 @@
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
 # (c) 2023 SuperSonic (https://github.com/supersonictw)
 
-target_name=""
-dropbox_token=""
-database_hostname=""
-database_username=""
-database_password=""
+target_name=$1
+database_hostname="localhost"
+database_username="root"
+database_password="illusion-admin"
 
 if ! command -v curl &>/dev/null; then
     apt-get update
