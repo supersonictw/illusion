@@ -1,3 +1,6 @@
+# illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
+# (c) 2023 SuperSonic (https://github.com/supersonictw)
+
 version: "2.2"
 services:
   database:
@@ -6,7 +9,9 @@ services:
     ports:
       - 127.0.0.1:2001:3306
     volumes:
-      - database:/var/lib/mysql
+      - database:/var/lib/mysql:rw
+      - ./backup.sh:/usr/local/bin/backup.sh:ro
+      - ./dump:/dump:rw
     networks:
       - illusion
     environment:
