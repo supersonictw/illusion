@@ -2,19 +2,28 @@
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
 # (c) 2023 SuperSonic (https://github.com/supersonictw)
 
-target_name=$1
-database_hostname="localhost"
-database_username="root"
-database_password="illusion-admin"
+# Arguments:
+BACKUP_DATABASE_NAME=$1
+BACKUP_DATABASE_HOST="localhost"
+BACKUP_DATABASE_USER="root"
+BACKUP_DATABASE_PASS="illusion-admin"
 
-if ! command -v curl &>/dev/null; then
-    apt-get update
-    apt-get install -y curl
+# Export databases
+compressed_filename="$BACKUP_FILENAME.xz"
+
+cd /tmp
+
+rm -rf $BACKUP_FILENAME $compressed_filename
+
+touch $compressed_filename
+chmod 600 $compressed_filename
+
+if ! [ -z "$BACKUP_DATABASE_NAME" ]; then
+    mysqldump -h$BACKUP_DATABASE_HOST -u$BACKUP_DATABASE_USER -p$BACKUP_DATABASE_PASS $BACKUP_DATABASE_NAME | xz -c >>$compressed_filename
+else
+    mysqldump -h$BACKUP_DATABASE_HOST -u$BACKUP_DATABASE_USER -p$BACKUP_DATABASE_PASS --all-databases | xz -c >>$compressed_filename
 fi
 
-tmp_filename="$target_name.sql.xz"
-touch /tmp/$tmp_filename && chmod 600 /tmp/$tmp_filename
-mysqldump -h$database_hostname -u$database_username -p$database_password $target_name | xz -c >>/tmp/$tmp_filename
-
-cat /tmp/$tmp_filename > /dump/$tmp_filename
-rm /tmp/$tmp_filename
+# Move to /dump
+rm -rf /dump/$compressed_filename
+mv $compressed_filename /dump/$compressed_filename
