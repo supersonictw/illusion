@@ -1,7 +1,7 @@
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
 # (c) 2023 SuperSonic (https://github.com/supersonictw)
 
-version: "2.2"
+version: "3.5"
 services:
   database:
     image: mariadb:10.10
@@ -44,4 +44,5 @@ volumes:
 
 networks:
   illusion:
+    name: illusion
     driver: bridge
