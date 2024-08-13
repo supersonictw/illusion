@@ -9,7 +9,11 @@ BACKUP_DATABASE_USER="root"
 BACKUP_DATABASE_PASS="illusion-admin"
 
 # Export databases
-compressed_filename="$BACKUP_FILENAME.xz"
+if ! [ -z "$BACKUP_DATABASE_NAME" ]; then
+    compressed_filename="database-$BACKUP_FILENAME.sql.xz"
+else
+    compressed_filename="databases.sql.xz"
+fi
 
 cd /tmp
 
