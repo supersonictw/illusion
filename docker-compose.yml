@@ -1,7 +1,6 @@
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
 # (c) 2025 Shiranui (https://shiranui.xyz)
 
-version: "3.5"
 services:
   database:
     image: mariadb:10.10
