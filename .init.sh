@@ -7,9 +7,9 @@ RANDOM_STRING() {
     docker run --rm alpine/openssl:latest rand -hex 16
 }
 
-# Copy from .env.default file
-cp .env.default .env.local
+# Copy from default.env
+cp default.env override.env
 
 # Generate a random password for MariaDB
 MARIADB_ROOT_PASSWORD="$(RANDOM_STRING)"
-sed -i "s/MARIADB_ROOT_PASSWORD=.*/MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD/" .env.local
+sed -i "s/MARIADB_ROOT_PASSWORD=.*/MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD/" override.env
