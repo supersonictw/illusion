@@ -32,4 +32,4 @@ Allow to connect via host `localhost` only.
 
 [MIT License](LICENSE)
 
-> (c)2022 [SuperSonic](https://github.com/supersonictw).
+> (c)2022 [SuperSonic](https://shiranui.xyz).

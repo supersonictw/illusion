@@ -1,5 +1,5 @@
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
-# (c) 2023 SuperSonic (https://github.com/supersonictw)
+# (c) 2025 Shiranui (https://shiranui.xyz)
 
 version: "3.5"
 services:
@@ -10,12 +10,13 @@ services:
       - 127.0.0.1:2001:3306
     volumes:
       - database:/var/lib/mysql:rw
-      - ./backup.sh:/usr/local/bin/backup.sh:ro
+      - ./.illusion-dump:/usr/local/bin/illusion-dump:ro
       - ./dump:/dump:rw
     networks:
       - illusion
-    environment:
-      MARIADB_ROOT_PASSWORD: illusion-admin
+    env_file:
+      - .env.default
+      - .env.local
     restart: always
 
   cache:

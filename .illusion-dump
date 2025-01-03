@@ -1,12 +1,12 @@
 #!/bin/bash
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
-# (c) 2023 SuperSonic (https://github.com/supersonictw)
+# (c) 2025 Shiranui (https://shiranui.xyz)
 
 # Arguments:
 BACKUP_DATABASE_NAME=$1
 BACKUP_DATABASE_HOST="localhost"
 BACKUP_DATABASE_USER="root"
-BACKUP_DATABASE_PASS="illusion-admin"
+BACKUP_DATABASE_PASS="$MARIADB_ROOT_PASSWORD"
 
 # Export databases
 if ! [ -z "$BACKUP_DATABASE_NAME" ]; then
