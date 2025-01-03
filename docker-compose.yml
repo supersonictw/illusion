@@ -10,7 +10,7 @@ services:
       - 127.0.0.1:2001:3306
     volumes:
       - database:/var/lib/mysql:rw
-      - ./.illusion-dump:/usr/local/bin/illusion-dump:ro
+      - ./.illusion-dump:/usr/local/bin/dumpfiles:ro
       - ./dump:/dump:rw
     networks:
       - illusion
