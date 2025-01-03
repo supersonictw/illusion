@@ -15,8 +15,10 @@ services:
     networks:
       - illusion
     env_file:
-      - .env.default
-      - .env.local
+      - path: ./default.env
+        required: true
+      - path: ./override.env
+        required: false
     restart: always
 
   cache:
