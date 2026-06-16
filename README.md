@@ -2,11 +2,13 @@
 
 docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
 
+> Before startup, run `sh .init.sh` to generate a random password for rendering the `.env` file.
+
 ## MariaDB default account
 
-| Username | Password       |
-| -------- | -------------- |
-| root     | illusion-admin |
+| Username | Password        |
+| -------- | --------------- |
+| root     | (Shown in .env) |
 
 ## Internal Hosts/Ports
 
