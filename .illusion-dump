@@ -1,6 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
 # (c) 2026 Shiranui (https://shiranui.xyz)
+
+# Exits on error occurred
+set -e
 
 # Arguments:
 BACKUP_DATABASE_HOST="localhost"
@@ -8,7 +11,7 @@ BACKUP_DATABASE_USER="root"
 BACKUP_DATABASE_PASS="$MARIADB_ROOT_PASSWORD"
 
 # Export databases
-mysqldump \
+mariadb-dump \
     -h"$BACKUP_DATABASE_HOST" \
     -u"$BACKUP_DATABASE_USER" \
     -p"$BACKUP_DATABASE_PASS" \
