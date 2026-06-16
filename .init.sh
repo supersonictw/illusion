@@ -1,6 +1,9 @@
 #!/bin/sh
 # illusion - docker-composer.yml of mariadb + redis + phpmyadmin, for sample only.
-# (c) 2025 Shiranui (https://shiranui.xyz)
+# (c) 2026 Shiranui (https://shiranui.xyz)
+
+# Exits on error occurred
+set -e
 
 RANDOM_STRING() {
     # Generate a random string using openssl
