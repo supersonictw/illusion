@@ -12,3 +12,6 @@ export MARIADB_ROOT_PASSWORD="$(RANDOM_STRING)"
 
 # Render the .env file from the template
 envsubst '$MARIADB_ROOT_PASSWORD' <.env.tmpl >.env
+
+# Echo done message
+echo "Generated .env file with random password."
