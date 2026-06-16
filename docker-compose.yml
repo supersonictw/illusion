@@ -3,7 +3,7 @@
 
 services:
   database:
-    image: mariadb:10.10
+    image: mariadb:12.3
     container_name: illusion-data
     ports:
       - 127.0.0.1:2001:3306
@@ -18,7 +18,7 @@ services:
     restart: always
 
   cache:
-    image: redis:7.0
+    image: redis:7.2
     container_name: illusion-cache
     ports:
       - 127.0.0.1:2002:6379
@@ -27,7 +27,7 @@ services:
     restart: always
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:5.2
+    image: phpmyadmin:5.2
     container_name: illusion-pma
     ports:
       - 127.0.0.1:2003:80
