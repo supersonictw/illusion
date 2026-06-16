@@ -7,3 +7,6 @@ set -e
 
 # Execute the dumpfiles script inside the container
 docker exec illusion-data dumpfiles
+
+# Echo done message
+echo "Database dump completed and saved to /dump/data.sql.xz"
