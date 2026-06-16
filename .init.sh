@@ -3,13 +3,12 @@
 # (c) 2025 Shiranui (https://shiranui.xyz)
 
 RANDOM_STRING() {
-    # Generate a random string for a password.
-    docker run --rm alpine/openssl:latest rand -hex 16
+    # Generate a random string using openssl
+    openssl rand -hex 16
 }
 
-# Copy from default.env
-cp default.env override.env
+# Generate a random passwords
+export MARIADB_ROOT_PASSWORD="$(RANDOM_STRING)"
 
-# Generate a random password for MariaDB
-MARIADB_ROOT_PASSWORD="$(RANDOM_STRING)"
-sed -i "s/MARIADB_ROOT_PASSWORD=.*/MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD/" override.env
+# Render the .env file from the template
+envsubst '$MARIADB_ROOT_PASSWORD' <.env.tmpl >.env

@@ -13,9 +13,8 @@ services:
       - ./dump:/dump:rw
     networks:
       - illusion
-    env_file:
-      - default.env
-      - override.env
+    environment:
+      MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASSWORD:?Run sh .init first to generate .env file}"
     restart: always
 
   cache:
